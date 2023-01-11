@@ -10,7 +10,7 @@ body{
   padding: 1rem;
   grid-area: main;
   display: grid;
-  grid-template-rows: 5rem auto auto;
+  grid-template-rows: 5rem 70% 20%;
 }
 
 body >*, .left-panel, textarea{
@@ -73,6 +73,7 @@ body >*, .left-panel, textarea{
 
 .scripted{
   padding: 2rem;
+  height: auto;
 }
 .card{
   border-radius: 20px!important;
@@ -85,6 +86,7 @@ body >*, .left-panel, textarea{
   overflow: hidden ;
   margin-bottom: 0;
   margin-top: auto;
+  filter: drop-shadow(5px 5px 10px);
 }
 .card-text{
   height: auto;
