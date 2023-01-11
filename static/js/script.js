@@ -16,7 +16,7 @@ window.addEventListener("resize", changeview)
 
 function changeview(){
   if (this.innerWidth >= 1024){
-    cardImg.src = "/static/assets/card-img.png"
+    cardImg.src = "./static/assets/card-img.png"
     card.style = "padding: 25% 1rem"
   }
   else{
@@ -32,7 +32,7 @@ function autoResize() {
   btnScript = true
   btnDecript = true
 
-  if(window.innerWidth >= 1024) cardImg.src = "/static/assets/card-img.png"
+  if(window.innerWidth >= 1024) cardImg.src = "./static/assets/card-img.png"
   else cardImg.src =""
   scriptTitle.innerHTML = "Ningun mensaje fue encontrado"
   scriptTxt.innerHTML = "ingresa el texto que desees encriptar o desencriptar";  
