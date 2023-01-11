@@ -3,6 +3,8 @@ var scriptTitle = document.getElementById("card-title")
 var scriptTxt = document.getElementById("card-text")
 var cardImg = document.getElementById("card-img")
 var card = document.getElementById("card")
+var vowelsArray = ["a","e","i","o","u"]
+var keysArray = ["ai","enter","imes","ober","ufat"]
 var btnScript = false
 var btnDecript = false
 
@@ -39,37 +41,13 @@ function autoResize() {
 }
 
 function onSubmit(){
-  var scriptResult = ""
-  var scriptedContent = primeTxt.value
-
+  
   if(scriptedContent != ""){
     if(btnScript){
       cardImg.src = ""
       card.style = "padding: 1rem"
       scriptTxt.style = "text-align: left!important;"
-
-
-      for (char of scriptedContent){
-    
-        if (char == "a"){
-          scriptResult +="ai"
-        }
-        else if(char == "e"){
-          scriptResult +="enter"
-        }
-        else if(char == "i"){
-          scriptResult +="imes"
-        }
-        else if(char == "o"){
-          scriptResult +="ober"
-        }
-        else if(char == "u"){
-          scriptResult +="ufat"
-        }
-        else{
-          scriptResult += char
-        }
-      }
+      var { scriptedContent, scriptResult } = strfyTxtArea()
       scriptTitle.innerHTML = "Mensaje encriptado"
       scriptTxt.innerHTML = scriptResult; 
       btnScript = true
@@ -79,6 +57,33 @@ function onSubmit(){
   
   }
   else alert("Ingrese texto para encriptar/desencriptar") 
+}
+
+function strfyTxtArea() {
+  var scriptResult = ""
+  var scriptedContent = primeTxt.value
+  for (char of scriptedContent) {
+    
+    if (char == "a") {
+      scriptResult += "ai"
+    }
+    else if (char == "e") {
+      scriptResult += "enter"
+    }
+    else if (char == "i") {
+      scriptResult += "imes"
+    }
+    else if (char == "o") {
+      scriptResult += "ober"
+    }
+    else if (char == "u") {
+      scriptResult += "ufat"
+    }
+    else {
+      scriptResult += char
+    }
+  }
+  return { scriptedContent, scriptResult }
 }
 
 function deCript(){
@@ -107,24 +112,14 @@ function deCript(){
   
       for(let i=0; i<array.length; i++){
         let item = array[i]
-  
-        while(item.search("ai") != -1 ){
-          item = item.replace("ai","a")
-        }
-        while(item.search("enter") != -1){
-          item = item.replace("enter","e")
-        }
-        while(item.search("imes") != -1){
-          item = item.replace("imes","i")
-        }
-        while(item.search("ober") != -1){
-          item = item.replace("ober","o")
-        }
-        while(item.search("ufat") != -1){
-          item = item.replace("ufat","u")
+
+        for(let x=0; x<vowelsArray.length; x++){
+          while(item.search(keysArray[x]) != -1){
+            item = item.replace(keysArray[x], vowelsArray[x])
+          }
         }
         array[i] = item
-      }
+      }    
   
       strgdTxt = array.join(" ")
   
